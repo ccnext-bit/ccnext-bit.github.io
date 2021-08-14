@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"user106.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="我是谁来自哪里到哪里去">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="https://user106.github.io/about/index.html">
+  <meta name="description" content="背景iOS &amp; macOS 作为操作系统，其中内置了许多系统库（Library）。dyld_shared_cache，即动态库共享缓存。自 iOS 3.1 后，所有系统动态库被集合成一个 dyld_shared_cache 文件，以提升性能。 存放路径为了研究dyld_shared_cache，首先要找到其存在的路径。可以在 Apple 开源的 https:&#x2F;&#x2F;opensource.app">
+<meta property="og:type" content="article">
+<meta property="og:title" content="dyld_shared_cache动态库共享缓存">
+<meta property="og:url" content="https://user106.github.io/2021/08/14/dyld-shared-cache%E5%8A%A8%E6%80%81%E5%BA%93%E5%85%B1%E4%BA%AB%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="CC的博客">
-<meta property="og:description" content="我是谁来自哪里到哪里去">
+<meta property="og:description" content="背景iOS &amp; macOS 作为操作系统，其中内置了许多系统库（Library）。dyld_shared_cache，即动态库共享缓存。自 iOS 3.1 后，所有系统动态库被集合成一个 dyld_shared_cache 文件，以提升性能。 存放路径为了研究dyld_shared_cache，首先要找到其存在的路径。可以在 Apple 开源的 https:&#x2F;&#x2F;opensource.app">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-08T09:50:32.000Z">
-<meta property="article:modified_time" content="2021-08-11T00:21:49.927Z">
+<meta property="article:published_time" content="2021-08-14T08:03:58.000Z">
+<meta property="article:modified_time" content="2021-08-14T08:04:53.572Z">
 <meta property="article:author" content="CC">
+<meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://user106.github.io/about/">
+<link rel="canonical" href="https://user106.github.io/2021/08/14/dyld-shared-cache%E5%8A%A8%E6%80%81%E5%BA%93%E5%85%B1%E4%BA%AB%E7%BC%93%E5%AD%98/">
 
 
 <script id="page-configurations">
@@ -40,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>about | CC的博客
-</title>
+  <title>dyld_shared_cache动态库共享缓存 | CC的博客</title>
   
 
 
@@ -171,43 +171,122 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/08/14/dyld-shared-cache%E5%8A%A8%E6%80%81%E5%BA%93%E5%85%B1%E4%BA%AB%E7%BC%93%E5%AD%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="记录美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC的博客">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          dyld_shared_cache动态库共享缓存
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">about
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2021-08-14 16:03:58 / 修改时间：16:04:53" itemprop="dateCreated datePublished" datetime="2021-08-14T16:03:58+08:00">2021-08-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>iOS &amp; macOS 作为操作系统，其中内置了许多系统库（Library）。dyld_shared_cache，即动态库共享缓存。自 iOS 3.1 后，所有系统动态库被集合成一个 dyld_shared_cache 文件，以提升性能。</p>
+<h2 id="存放路径"><a href="#存放路径" class="headerlink" title="存放路径"></a>存放路径</h2><p>为了研究<code>dyld_shared_cache</code>，首先要找到其存在的路径。可以在 Apple 开源的 <a target="_blank" rel="noopener" href="https://opensource.apple.com/tarballs/dyld/">https://opensource.apple.com/tarballs/dyld/</a>  中的<code>dyld_cache_format.h</code>文件中发现，其分别存放在 macOS 和 iOS 中的路径。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// This is the  location of the macOS shared cache on macOS 11.0 and later</span><br><span class="line">#define MACOSX_MRM_DYLD_SHARED_CACHE_DIR   &quot;/System/Library/dyld/&quot;</span><br><span class="line"></span><br><span class="line">#define IPHONE_DYLD_SHARED_CACHE_DIR       &quot;/System/Library/Caches/com.apple.dyld/&quot;</span><br></pre></td></tr></table></figure>
+<p>dyld_shared_cache 存在于 iOS 设备的 <code>/System/Library/Caches/com.apple.dyld/</code> 目录。文件名即为 <code>dyld_shared_cache_arm*</code> 加上对应的架构编号。</p>
+<span id="more"></span>
+
+<h3 id="从设备提取-dyld-shared-cache"><a href="#从设备提取-dyld-shared-cache" class="headerlink" title="从设备提取 dyld_shared_cache"></a>从设备提取 dyld_shared_cache</h3><ul>
+<li><p>如果 iOS 设备已经越狱，那么就可以直接从 /System/Library/Caches/com.apple.dyld/ 目录下找到，拷贝出来即可。</p>
+</li>
+<li><p>如果没有越狱设备，则可以巧妙地使用 Shortcuts（捷径）App 来获取。 </p>
+</li>
+</ul>
+<ol>
+<li>添加操作：网页–&gt;URL–从输入中获取URL–输入file:////System/Library/Caches/com.apple.dyld/</li>
+<li>添加操作：文稿–&gt;归档–制作归档</li>
+<li>添加操作：共享–&gt;系统–隔空投送</li>
+</ol>
+<p>快捷指令运行后，将其 AirDrop 到 Mac 端，解压即可。</p>
+<p>dyld_shared_cache共享缓存库，可以放到Hopper里查看所有的子库。</p>
+<h2 id="还原dyld-shared-cache"><a href="#还原dyld-shared-cache" class="headerlink" title="还原dyld_shared_cache"></a>还原dyld_shared_cache</h2><p>将库从 dyld_shared_cache 中还原，选取 Apple 开源 dyld 项目中的 dsc_extractor.cpp 来提取。</p>
+<p>下载 Apple Open Source 官网 dyld 代码，找到其中 dsc_extractor.cpp 文件，将其 main 函数上方的 #if 0 宏置为 #if 1，这样 main 函数才得以执行。</p>
+<p>使用 macOS 自带的 clang++ 编译器即可编译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clang++ -o dsc_extractor ./dsc_extractor.cpp dsc_iterator.cpp</span><br></pre></td></tr></table></figure>
+<p>得到可执行文件<code>dsc_extractor</code><br>运行可执行文件，并带上 dyld_shared_cache_arm64 路径和要提取到的路径参数即可。如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dsc_extractor dyld_shared_cache_arm64 ./frameworks</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果不想自己编译，GitHub上有人提供了生成好的dsc_extractor可执行文件 <a target="_blank" rel="noopener" href="https://github.com/macmade/dyld_cache_extract">https://github.com/macmade/dyld_cache_extract</a></p>
+<p>Xcode连接真机后，会在/Users/CC/Library/Developer/Xcode/iOS\ DeviceSupport/14.4.1\ (18D61)\ arm64e/Symbols/System/Library/下有PrivateFrameworks和Frameworks（不用分解缓存库）</p>
+<h2 id="dyld-shared-cache存在的好处"><a href="#dyld-shared-cache存在的好处" class="headerlink" title="dyld_shared_cache存在的好处"></a>dyld_shared_cache存在的好处</h2><p>在搭载 iOS 9.0.1 的 iPhone 5s 上，dyld_shared_cache_armv7s 大小为 518.6 MB，dyld_shared_cache_arm64 大小为 619.9 MB。而自 iOS 11 开始全面弃用 32 位应用，因此搭载 iOS 12 的 iPhone X 上仅有 dyld_shared_cache_arm64，大小为 1.28 GB。可以看出系统库在逐渐增大，这其中包括新增的 SDK 等。如果不进行整合，系统加载类库每次都需要检索所有需要的动态库，App 的启动时间会剧增。而整合为单一文件，程序启动的压力便会小很多，启动速度和性能便有所提升。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/iOS/" rel="tag"># iOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/14/%E6%8E%A2%E7%A9%B6Category-02%E6%B7%BB%E5%8A%A0%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F/" rel="prev" title="探究Category-02添加成员变量">
+      <i class="fa fa-chevron-left"></i> 探究Category-02添加成员变量
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/14/iOS%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/" rel="next" title="iOS中常见线程同步方案">
+      iOS中常见线程同步方案 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <h1 id="我是谁"><a href="#我是谁" class="headerlink" title="我是谁"></a>我是谁</h1><h1 id="来自哪里"><a href="#来自哪里" class="headerlink" title="来自哪里"></a>来自哪里</h1><h1 id="到哪里去"><a href="#到哪里去" class="headerlink" title="到哪里去"></a>到哪里去</h1>
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -259,7 +338,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%88%91%E6%98%AF%E8%B0%81"><span class="nav-number">1.</span> <span class="nav-text">我是谁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9D%A5%E8%87%AA%E5%93%AA%E9%87%8C"><span class="nav-number">2.</span> <span class="nav-text">来自哪里</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%B0%E5%93%AA%E9%87%8C%E5%8E%BB"><span class="nav-number">3.</span> <span class="nav-text">到哪里去</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%98%E6%94%BE%E8%B7%AF%E5%BE%84"><span class="nav-number">2.</span> <span class="nav-text">存放路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%8E%E8%AE%BE%E5%A4%87%E6%8F%90%E5%8F%96-dyld-shared-cache"><span class="nav-number">2.1.</span> <span class="nav-text">从设备提取 dyld_shared_cache</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%98%E5%8E%9Fdyld-shared-cache"><span class="nav-number">3.</span> <span class="nav-text">还原dyld_shared_cache</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dyld-shared-cache%E5%AD%98%E5%9C%A8%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="nav-number">4.</span> <span class="nav-text">dyld_shared_cache存在的好处</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -402,7 +481,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'User106.github.io',
       owner       : 'User106',
       admin       : ['User106'],
-      id          : '3be7aa98d992907175cbd79c194399f2',
+      id          : '911205fdc1a9d7f5226302f343f06012',
         language: 'zh-CN',
       distractionFreeMode: true
     });
