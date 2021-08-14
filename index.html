@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 5.4.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon-180x180-cc.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-cc.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-cc.png">
+  <link rel="mask-icon" href="/images/logo-cc.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -433,91 +433,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="CC">
-      <meta itemprop="description" content="记录美好生活">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="CC的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/" class="post-title-link" itemprop="url">KVO原理探索</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-22 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-22T13:11:19+08:00">2021-03-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-14 10:56:40" itemprop="dateModified" datetime="2021-08-14T10:56:40+08:00">2021-08-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="KVO使用方法"><a href="#KVO使用方法" class="headerlink" title="KVO使用方法"></a>KVO使用方法</h3><p>给对象的指定属性绑定监听，并设置监听类型。每当该对象指定的属性被改变时，系统就会调用observeValueForKeyPath方法。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> - (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    People *people = [People new];</span><br><span class="line">    self.people = people;</span><br><span class="line">    /*</span><br><span class="line">     作用:给对象绑定一个监听器(观察者)</span><br><span class="line">     - Observer 观察者</span><br><span class="line">     - KeyPath 要监听的属性</span><br><span class="line">     - options 选项(方便在监听的方法中拿到属性值)</span><br><span class="line">     */</span><br><span class="line">    [people addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];</span><br><span class="line"></span><br><span class="line">    // 移除监听</span><br><span class="line">//    [people removeObserver:self forKeyPath:@&quot;name&quot;];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> *  当监听的属性值发生改变</span><br><span class="line"> *</span><br><span class="line"> *  @param keyPath 要改变的属性</span><br><span class="line"> *  @param object  要改变的属性所属的对象</span><br><span class="line"> *  @param change  改变的内容</span><br><span class="line"> *  @param context 上下文</span><br><span class="line"> */</span><br><span class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *,id&gt; *)change context:(void *)context&#123;</span><br><span class="line">    NSLog(@&quot;%@------%@------%@&quot;, keyPath, object, change);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p> 其实，每当我们使用KVO的<code>addObserver</code>时，系统会创建一个派生类<code>NSKVONotifying_People</code>。然后，系统动态地让其继承People类，并添加方法:<code>setName</code>。在<code>NSKVONotifying_People</code>的setName方法中添加<code>observeValueForKeyPath</code>方法的调用。</p>
-<p>在KVO的使用中，我们对<code>NSKVONotifying_People</code>是完全不知情的。那么，我们如何调用它的setName呢？其实，在创建<code>NSKVONotifying_People</code>时，我们就将<code>People</code>的isa指针指向，换成了<code>NSKVONotifying_People</code>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/KVC%E6%9C%AC%E8%B4%A8%E6%8E%A2%E7%B4%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -586,6 +501,91 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/03/22/KVC%E6%9C%AC%E8%B4%A8%E6%8E%A2%E7%B4%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="记录美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/" class="post-title-link" itemprop="url">KVO原理探索</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-22 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-22T13:11:19+08:00">2021-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-14 10:56:40" itemprop="dateModified" datetime="2021-08-14T10:56:40+08:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="KVO使用方法"><a href="#KVO使用方法" class="headerlink" title="KVO使用方法"></a>KVO使用方法</h3><p>给对象的指定属性绑定监听，并设置监听类型。每当该对象指定的属性被改变时，系统就会调用observeValueForKeyPath方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> - (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    People *people = [People new];</span><br><span class="line">    self.people = people;</span><br><span class="line">    /*</span><br><span class="line">     作用:给对象绑定一个监听器(观察者)</span><br><span class="line">     - Observer 观察者</span><br><span class="line">     - KeyPath 要监听的属性</span><br><span class="line">     - options 选项(方便在监听的方法中拿到属性值)</span><br><span class="line">     */</span><br><span class="line">    [people addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];</span><br><span class="line"></span><br><span class="line">    // 移除监听</span><br><span class="line">//    [people removeObserver:self forKeyPath:@&quot;name&quot;];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> *  当监听的属性值发生改变</span><br><span class="line"> *</span><br><span class="line"> *  @param keyPath 要改变的属性</span><br><span class="line"> *  @param object  要改变的属性所属的对象</span><br><span class="line"> *  @param change  改变的内容</span><br><span class="line"> *  @param context 上下文</span><br><span class="line"> */</span><br><span class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *,id&gt; *)change context:(void *)context&#123;</span><br><span class="line">    NSLog(@&quot;%@------%@------%@&quot;, keyPath, object, change);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p> 其实，每当我们使用KVO的<code>addObserver</code>时，系统会创建一个派生类<code>NSKVONotifying_People</code>。然后，系统动态地让其继承People类，并添加方法:<code>setName</code>。在<code>NSKVONotifying_People</code>的setName方法中添加<code>observeValueForKeyPath</code>方法的调用。</p>
+<p>在KVO的使用中，我们对<code>NSKVONotifying_People</code>是完全不知情的。那么，我们如何调用它的setName呢？其实，在创建<code>NSKVONotifying_People</code>时，我们就将<code>People</code>的isa指针指向，换成了<code>NSKVONotifying_People</code>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
