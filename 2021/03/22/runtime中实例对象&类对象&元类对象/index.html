@@ -23,20 +23,20 @@
   <meta name="description" content="实例对象（objc_object）objc.h定义 12345678&#x2F;&#x2F;&#x2F; Represents an instance of a class.struct objc_object &amp;#123;    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;&amp;#125;;&#x2F;&#x2F;&#x2F; A pointer to an instance of a class.typedef st">
 <meta property="og:type" content="article">
 <meta property="og:title" content="runtime中实例对象&amp;类对象&amp;元类对象">
-<meta property="og:url" content="https://user106.github.io/2021/08/08/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/index.html">
+<meta property="og:url" content="https://user106.github.io/2021/03/22/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/index.html">
 <meta property="og:site_name" content="CC的博客">
 <meta property="og:description" content="实例对象（objc_object）objc.h定义 12345678&#x2F;&#x2F;&#x2F; Represents an instance of a class.struct objc_object &amp;#123;    Class _Nonnull isa  OBJC_ISA_AVAILABILITY;&amp;#125;;&#x2F;&#x2F;&#x2F; A pointer to an instance of a class.typedef st">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://note.youdao.com/yws/public/resource/4da0b6eafc83e7e6897933ce2b74d0f6/xmlnote/WEBRESOURCEe15885313e910d44276ea22595a63216/5348">
-<meta property="og:image" content="https://note.youdao.com/yws/public/resource/4da0b6eafc83e7e6897933ce2b74d0f6/xmlnote/WEBRESOURCE256457a27fbf87b914ced205e3a6dbc1/3688">
-<meta property="article:published_time" content="2021-08-08T06:50:19.000Z">
-<meta property="article:modified_time" content="2021-08-10T00:22:23.478Z">
+<meta property="og:image" content="https://www.hidevcc.cn/wp-content/uploads/2021/03/Artboard-13.png">
+<meta property="og:image" content="https://www.hidevcc.cn/wp-content/uploads/2021/03/1111.png">
+<meta property="article:published_time" content="2021-03-22T06:50:19.000Z">
+<meta property="article:modified_time" content="2021-08-14T03:04:42.424Z">
 <meta property="article:author" content="CC">
 <meta property="article:tag" content="iOS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://note.youdao.com/yws/public/resource/4da0b6eafc83e7e6897933ce2b74d0f6/xmlnote/WEBRESOURCEe15885313e910d44276ea22595a63216/5348">
+<meta name="twitter:image" content="https://www.hidevcc.cn/wp-content/uploads/2021/03/Artboard-13.png">
 
-<link rel="canonical" href="https://user106.github.io/2021/08/08/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/">
+<link rel="canonical" href="https://user106.github.io/2021/03/22/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/">
 
 
 <script id="page-configurations">
@@ -112,7 +112,7 @@
       <h1 class="site-title">CC的博客</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">记录美好生活</p>
+      <p class="site-subtitle" itemprop="description">日拱一卒，功不唐捐</p>
   </div>
 
   <div class="site-nav-right">
@@ -182,7 +182,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/08/08/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -205,14 +205,14 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-08 14:50:19" itemprop="dateCreated datePublished" datetime="2021-08-08T14:50:19+08:00">2021-08-08</time>
+              <time title="创建时间：2021-03-22 14:50:19" itemprop="dateCreated datePublished" datetime="2021-03-22T14:50:19+08:00">2021-03-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-10 08:22:23" itemprop="dateModified" datetime="2021-08-10T08:22:23+08:00">2021-08-10</time>
+                <time title="修改时间：2021-08-14 11:04:42" itemprop="dateModified" datetime="2021-08-14T11:04:42+08:00">2021-08-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -255,12 +255,12 @@
 <p><code>class_rw_t</code>结构体中存储有方法列表、属性列表、协议列表等。其中<code>class_ro_t</code>结构体保存的是原信息，<code>class_ro_t</code>结构体定义如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">struct class_ro_t &#123;</span><br><span class="line">    uint32_t flags;</span><br><span class="line">    uint32_t instanceStart;</span><br><span class="line">    uint32_t instanceSize;//instance对象占用的空间</span><br><span class="line">#ifdef __LP64__</span><br><span class="line">    uint32_t reserved;</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">    const uint8_t * ivarLayout;</span><br><span class="line">    </span><br><span class="line">    const char * name;//类名</span><br><span class="line">    method_list_t * baseMethodList;//原方法列表</span><br><span class="line">    protocol_list_t * baseProtocols;//原协议列表</span><br><span class="line">    const ivar_list_t * ivars;//成员变量列表</span><br><span class="line"></span><br><span class="line">    const uint8_t * weakIvarLayout;</span><br><span class="line">    property_list_t *baseProperties;//原属性列表</span><br><span class="line"></span><br><span class="line">    method_list_t *baseMethods() const &#123;</span><br><span class="line">        return baseMethodList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>综上所述，在新版本的定义中类对象的结构如下图所示：</p>
-<p><img src="https://note.youdao.com/yws/public/resource/4da0b6eafc83e7e6897933ce2b74d0f6/xmlnote/WEBRESOURCEe15885313e910d44276ea22595a63216/5348" alt="s"></p>
+<p><img src="https://www.hidevcc.cn/wp-content/uploads/2021/03/Artboard-13.png"></p>
 <p>结构体里保存了指向父类的指针、类的名字、版本、实例大小、实例变量列表、方法列表、缓存、遵守的协议列表等，这个结构体存放的数据称为元数据(metadata)，<br>此结构体的第一个成员变量也是isa指针，这就说明了Class本身其实也是一个对象，因此我们称之为类对象。</p>
 <h5 id="元类"><a href="#元类" class="headerlink" title="元类"></a>元类</h5><p>对象（objc_object 结构体）的isa指针 指向的是对应的 类对象（object_class 结构体）。那么 类对象（object_class 结构体）的<code>isa</code>指针 又指向类对象自身的Meta Class（元类）。</p>
 <p>Meta Class（元类） 就是一个类对象所属的 类。一个对象所属的类叫做类对象，而一个类对象所属的类就叫做 <code>元类</code>。</p>
 <p>Runtime 中把类对象所属类型就叫做 Meta Class（元类），用于描述类对象本身所具有的特征，而在元类的 <code>methodLists</code> 中，保存了类的方法链表，即所谓的「类方法」。并且类对象中的 <code>isa</code> 指针指向的就是元类。每个类对象有且仅有一个与之相关的元类。</p>
-<h5 id="元类与类、实例之间的关系"><a href="#元类与类、实例之间的关系" class="headerlink" title="元类与类、实例之间的关系"></a>元类与类、实例之间的关系</h5><p><img src="https://note.youdao.com/yws/public/resource/4da0b6eafc83e7e6897933ce2b74d0f6/xmlnote/WEBRESOURCE256457a27fbf87b914ced205e3a6dbc1/3688" alt="s"></p>
+<h5 id="元类与类、实例之间的关系"><a href="#元类与类、实例之间的关系" class="headerlink" title="元类与类、实例之间的关系"></a>元类与类、实例之间的关系</h5><p><img src="https://www.hidevcc.cn/wp-content/uploads/2021/03/1111.png"></p>
 <p>通过上图我们可以看出整个体系构成了一个自闭环，struct <code>objc_object</code>结构体实例它的isa指针指向类对象，<br>类对象的isa指针指向了元类，<code>super_class</code>指针指向了父类的类对象，<br>而元类的<code>super_class</code>指针指向了父类的元类，那元类的isa指针又指向了自己。</p>
 
     </div>
@@ -280,10 +280,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/08/NSObject%E6%9C%AC%E8%B4%A8/" rel="prev" title="NSObject本质">
-      <i class="fa fa-chevron-left"></i> NSObject本质
+    <a href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/" rel="prev" title="KVO原理探索">
+      <i class="fa fa-chevron-left"></i> KVO原理探索
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/23/+initialize%E6%96%B9%E6%B3%95/" rel="next" title="+initialize方法">
+      +initialize方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -357,7 +360,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -486,7 +489,7 @@ NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
       repo        : 'User106.github.io',
       owner       : 'User106',
       admin       : ['User106'],
-      id          : '19090f219e5d7dea2c26f41c94695d7c',
+      id          : 'c1c48b282c5f9afea76a3c01464f692b',
         language: 'zh-CN',
       distractionFreeMode: true
     });

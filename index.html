@@ -106,7 +106,7 @@
       <h1 class="site-title">CC的博客</h1>
       <span class="logo-line-after"><i></i></span>
     </a>
-      <p class="site-subtitle" itemprop="description">记录美好生活</p>
+      <p class="site-subtitle" itemprop="description">日拱一卒，功不唐捐</p>
   </div>
 
   <div class="site-nav-right">
@@ -175,7 +175,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/08/08/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/23/+Load%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -189,7 +189,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/08/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">runtime中实例对象&类对象&元类对象</a>
+            <a href="/2021/03/23/+Load%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">+Load方法</a>
         </h2>
 
         <div class="post-meta">
@@ -199,14 +199,188 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-08 14:50:19" itemprop="dateCreated datePublished" datetime="2021-08-08T14:50:19+08:00">2021-08-08</time>
+              <time title="创建时间：2021-03-23 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-23T13:11:19+08:00">2021-03-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-10 08:22:23" itemprop="dateModified" datetime="2021-08-10T08:22:23+08:00">2021-08-10</time>
+                <time title="修改时间：2021-08-14 11:11:00" itemprop="dateModified" datetime="2021-08-14T11:11:00+08:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Load方法会在类和分类第一次加载的时候调用，并且在程序运行过程中仅调用一次。</p>
+<h3 id="调用顺序"><a href="#调用顺序" class="headerlink" title="调用顺序"></a>调用顺序</h3><p>1、先调用类的+Load方法</p>
+<ul>
+<li><p>按照编译的顺序调用，先编译先调用。</p>
+</li>
+<li><p>调用分类的+load方法前，先调用类的+Load方法。</p>
+</li>
+</ul>
+<p>2、再调用分类的+Load方法</p>
+<ul>
+<li>按照编译顺序先后调用，先编译先调用。</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/23/+Load%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/23/+initialize%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="记录美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/23/+initialize%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">+initialize方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-23 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-23T13:11:19+08:00">2021-03-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-14 11:11:42" itemprop="dateModified" datetime="2021-08-14T11:11:42+08:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>initialize方法会在类第一次接收到消息的时候调用。</p>
+<h3 id="调用顺序"><a href="#调用顺序" class="headerlink" title="调用顺序"></a>调用顺序</h3><p>先调用父类的initialize方法，再调用子类的initialize方法。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/23/+initialize%E6%96%B9%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="记录美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/22/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">runtime中实例对象&类对象&元类对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-22 14:50:19" itemprop="dateCreated datePublished" datetime="2021-03-22T14:50:19+08:00">2021-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-14 11:04:42" itemprop="dateModified" datetime="2021-08-14T11:04:42+08:00">2021-08-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -235,7 +409,7 @@
 <p>这里的 id 被定义为一个指向 objc_object 结构体 的指针。从中可以看出 objc_object 结构体 只包含一个 Class 类型的 isa 指针。一个 Object（对象）唯一保存的就是它所属 Class（类） 的地址。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/08/08/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+              <a class="btn" href="/2021/03/22/runtime%E4%B8%AD%E5%AE%9E%E4%BE%8B%E5%AF%B9%E8%B1%A1&%E7%B1%BB%E5%AF%B9%E8%B1%A1&%E5%85%83%E7%B1%BB%E5%AF%B9%E8%B1%A1/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -259,7 +433,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/08/08/NSObject%E6%9C%AC%E8%B4%A8/">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -273,7 +447,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/08/08/NSObject%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">NSObject本质</a>
+            <a href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/" class="post-title-link" itemprop="url">KVO原理探索</a>
         </h2>
 
         <div class="post-meta">
@@ -283,14 +457,190 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-08-08 13:11:19" itemprop="dateCreated datePublished" datetime="2021-08-08T13:11:19+08:00">2021-08-08</time>
+              <time title="创建时间：2021-03-22 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-22T13:11:19+08:00">2021-03-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-10 08:22:38" itemprop="dateModified" datetime="2021-08-10T08:22:38+08:00">2021-08-10</time>
+                <time title="修改时间：2021-08-14 10:56:40" itemprop="dateModified" datetime="2021-08-14T10:56:40+08:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="KVO使用方法"><a href="#KVO使用方法" class="headerlink" title="KVO使用方法"></a>KVO使用方法</h3><p>给对象的指定属性绑定监听，并设置监听类型。每当该对象指定的属性被改变时，系统就会调用observeValueForKeyPath方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> - (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];</span><br><span class="line">    People *people = [People new];</span><br><span class="line">    self.people = people;</span><br><span class="line">    /*</span><br><span class="line">     作用:给对象绑定一个监听器(观察者)</span><br><span class="line">     - Observer 观察者</span><br><span class="line">     - KeyPath 要监听的属性</span><br><span class="line">     - options 选项(方便在监听的方法中拿到属性值)</span><br><span class="line">     */</span><br><span class="line">    [people addObserver:self forKeyPath:@&quot;name&quot; options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];</span><br><span class="line"></span><br><span class="line">    // 移除监听</span><br><span class="line">//    [people removeObserver:self forKeyPath:@&quot;name&quot;];</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">/**</span><br><span class="line"> *  当监听的属性值发生改变</span><br><span class="line"> *</span><br><span class="line"> *  @param keyPath 要改变的属性</span><br><span class="line"> *  @param object  要改变的属性所属的对象</span><br><span class="line"> *  @param change  改变的内容</span><br><span class="line"> *  @param context 上下文</span><br><span class="line"> */</span><br><span class="line">- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *,id&gt; *)change context:(void *)context&#123;</span><br><span class="line">    NSLog(@&quot;%@------%@------%@&quot;, keyPath, object, change);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h3><p> 其实，每当我们使用KVO的<code>addObserver</code>时，系统会创建一个派生类<code>NSKVONotifying_People</code>。然后，系统动态地让其继承People类，并添加方法:<code>setName</code>。在<code>NSKVONotifying_People</code>的setName方法中添加<code>observeValueForKeyPath</code>方法的调用。</p>
+<p>在KVO的使用中，我们对<code>NSKVONotifying_People</code>是完全不知情的。那么，我们如何调用它的setName呢？其实，在创建<code>NSKVONotifying_People</code>时，我们就将<code>People</code>的isa指针指向，换成了<code>NSKVONotifying_People</code>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/22/KVO%E5%8E%9F%E7%90%86%E6%8E%A2%E7%B4%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/KVC%E6%9C%AC%E8%B4%A8%E6%8E%A2%E7%B4%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="记录美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/22/KVC%E6%9C%AC%E8%B4%A8%E6%8E%A2%E7%B4%A2/" class="post-title-link" itemprop="url">KVC本质探索</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-22 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-22T13:11:19+08:00">2021-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-14 11:07:39" itemprop="dateModified" datetime="2021-08-14T11:07:39+08:00">2021-08-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Programmer/" itemprop="url" rel="index"><span itemprop="name">Programmer</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>KVC全称是Key-Value Coding，键值编码，可以通过Key来访问和修改Value。<br>常见API</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- (void)setValue:(id)value forKey:(NSString *)key;</span><br><span class="line">- (void)setValue:(id)value forKeyPath:(NSString *)keyPath;</span><br><span class="line">- (id)valueForKey:(NSString *)key;</span><br><span class="line">- (id)valueForKeyPath:(NSString *)keyPath;</span><br></pre></td></tr></table></figure>
+
+<p><code>setValue:forKey:</code>根据属性名做赋值的操作</p>
+<p><code>setValue: forKeyPath:</code>根据key的路径做多层级间的赋值操作</p>
+<p>使用示例代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">People *people = [People new];</span><br><span class="line">Dog *dog = [Dog new];</span><br><span class="line">people.dog = dog;</span><br><span class="line">[people setValue:@10 forKey:@&quot;age&quot;];</span><br><span class="line">[people setValue:@&quot;s&quot; forKeyPath:@&quot;dog.name&quot;];</span><br><span class="line"></span><br><span class="line">[people valueForKey:@&quot;age&quot;];</span><br><span class="line"></span><br><span class="line">[people valueForKeyPath:@&quot;dog.name&quot;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="底层原理"><a href="#底层原理" class="headerlink" title="底层原理"></a>底层原理</h4><h5 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h5><p>当我们调用<code>setValue:forKeyPath:</code>方法后，系统会按照顺序查找两个方法：setKey和_setKey，如果实现了这两个方法其中一个，那么系统就会调用对应的方法。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/22/KVC%E6%9C%AC%E8%B4%A8%E6%8E%A2%E7%B4%A2/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://user106.github.io/2021/03/22/NSObject%E6%9C%AC%E8%B4%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="CC">
+      <meta itemprop="description" content="记录美好生活">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CC的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/22/NSObject%E6%9C%AC%E8%B4%A8/" class="post-title-link" itemprop="url">NSObject本质</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-22 13:11:19" itemprop="dateCreated datePublished" datetime="2021-03-22T13:11:19+08:00">2021-03-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-14 11:03:12" itemprop="dateModified" datetime="2021-08-14T11:03:12+08:00">2021-08-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -324,7 +674,7 @@
 <p>参数o 指定生成的文件名，不指定则默认和原文件同名</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/08/08/NSObject%E6%9C%AC%E8%B4%A8/#more" rel="contents">
+              <a class="btn" href="/2021/03/22/NSObject%E6%9C%AC%E8%B4%A8/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -410,7 +760,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
